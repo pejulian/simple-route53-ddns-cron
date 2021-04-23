@@ -31,10 +31,20 @@ Understand more about these values by reading the [README](https://github.com/pe
 Once everything is setup, run `npm start` to manually start the server.
 
 
-For starting the server as a deamon:
+## Run at startup
 
-1. Make sure to run `npm build` to create the `dist` folder
-2. Run the following
-    ```bash
-    /path/to/repo/node_modules/.bin/nodemon -r dotenv/config /path/to/repo/dist/index.js
-    ```
+Create a simple startup shell script (i.e. `startup-script.sh`) that navigates to the repo directory and run `npm start`:
+
+```bash
+#! /bin/sh
+cd /root/simple-route53-ddns-cron
+npm run start
+```
+
+Then create an entry in `/etc/crontab` that will run the script on every reboot:
+
+```bash
+@reboot root /path/to/repo/startup-script.sh
+```
+
+This will startup `nodemon` and subsequently the `expressjs` server that will schedule the `cron` to run at the predefined timeslots.
