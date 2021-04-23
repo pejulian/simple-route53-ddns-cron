@@ -36,5 +36,5 @@ For starting the server as a deamon:
 1. Make sure to run `npm build` to create the `dist` folder
 2. Run the following
     ```bash
-    /path/to/repo/node_modules/bin/nodemon -r dotenv/config /path/to/repo/dist/index.js
+    /path/to/repo/node_modules/.bin/nodemon -r dotenv/config /path/to/repo/dist/index.js
     ```
