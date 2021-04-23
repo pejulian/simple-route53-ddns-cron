@@ -27,3 +27,21 @@ _Remember to replace the sample values with actual values according to your setu
 > `IAM_PROFILE` must be properly configured IAM User on your machine (configured via AWS CLI)
 
 Understand more about these values by reading the [README](https://github.com/pejulian/simple-route53-ddns/blob/master/README.md) for the node module that this server will invoke.
+
+Once everything is setup, make sure to build the script at least once to have the `dist` folder output:
+
+```bash
+npm run build
+```
+
+and then run 
+
+```bash
+node -r dotenv/config
+```
+
+or using `nodemon`:
+
+```bash
+nodemon -r dotenv/config
+```

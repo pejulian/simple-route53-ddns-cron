@@ -1,10 +1,7 @@
 import express from 'express';
 import * as cron from 'node-cron';
 import chalk from 'chalk';
-import dotenv from 'dotenv';
 import shelljs from 'shelljs';
-
-dotenv.config();
 
 const app = express();
 
