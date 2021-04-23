@@ -1,0 +1,9 @@
+src
+types
+coverage
+.prettierrc
+.editorconfig
+jest.config.js
+*.test.ts
+__mocks__
+.env*

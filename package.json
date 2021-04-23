@@ -1,0 +1,74 @@
+{
+    "name": "simple-route53-ddns-cron",
+    "version": "0.0.2",
+    "description": "Simple expressjs server that runs a cron expression to call a script to update the public IP address of the current network to Route53 Hosted Zone A Record Set",
+    "main": "./dist/index",
+    "bin": {
+        "simple-route53-ddns-cron": "./dist/index.js"
+    },
+    "scripts": {
+        "start": "npm run build && node dist/index.js",
+        "eslint": "./node_modules/.bin/eslint . --fix",
+        "build": "rimraf dist/* && npm run eslint && tsc",
+        "test": "jest",
+        "test:coverage": "npm run prettier:format && jest --collectCoverage",
+        "prettier:format": "prettier --write ./src/**/*.ts",
+        "prepare": "npm run build",
+        "simple-route53-ddns": "simple-route53-ddns"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "pretty-quick --staged"
+        }
+    },
+    "lint-staged": {
+        "*.ts": [
+            "./node_modules/.bin/eslint --fix",
+            "git add"
+        ]
+    },
+    "keywords": [
+        "aws",
+        "route53",
+        "dynamic",
+        "dns"
+    ],
+    "author": {
+        "email": "bleushade@gmail.com",
+        "name": "Julian Pereira",
+        "url": "https://www.julian-pereira.com"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "chalk": "^4.1.1",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "node-cron": "^3.0.0",
+        "shelljs": "^0.8.4",
+        "simple-route53-ddns": "0.0.3"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.11",
+        "@types/jest": "^26.0.22",
+        "@types/node": "^14.14.37",
+        "@types/rimraf": "^3.0.0",
+        "@types/shelljs": "^0.8.8",
+        "@typescript-eslint/eslint-plugin": "^4.22.0",
+        "@typescript-eslint/parser": "^4.22.0",
+        "child-process-promise": "^2.2.1",
+        "cpx": "^1.5.0",
+        "eslint": "^7.24.0",
+        "eslint-config-prettier": "^8.2.0",
+        "eslint-plugin-jest": "^24.3.5",
+        "eslint-plugin-prettier": "^3.4.0",
+        "husky": "^6.0.0",
+        "jest": "^26.6.3",
+        "lint-staged": "^10.5.4",
+        "prettier": "^2.2.1",
+        "pretty-quick": "^3.1.0",
+        "rimraf": "^3.0.2",
+        "semver": "^7.3.5",
+        "ts-jest": "^26.5.4",
+        "typescript": "^4.2.4"
+    }
+}
