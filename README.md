@@ -2,6 +2,8 @@
 
 This repository holds a simple express server that can be spun up to run the node module [simple-route53-ddns](https://github.com/pejulian/simple-route53-ddns) that will fetch the public IP address of the current network it is running on and update it in the relevant "A" record in Route53 for the specified AWS account.
 
+My use case for this server is for it to be run within a TrueNAS (FreeBSD) jail via `crontab` to keep my public ip address updated against my FQDN in AWS Route53.
+
 ## Usage
 
 Fork the repository and create a `.env` file in the root directory with the following variables:
@@ -48,3 +50,16 @@ Then create an entry in `/etc/crontab` that will run the script on every reboot:
 ```
 
 This will startup `nodemon` and subsequently the `expressjs` server that will schedule the `cron` to run at the predefined timeslots.
+
+## Troubleshooting
+
+In FreeBSD, run `sockstat -4 -l` to view running ports. The default server port set for the expressjs server is `1337`. You should see this port listed in the output of that command. This indicates that the express server is running.
+
+
+
+
+
+
+
+
+
