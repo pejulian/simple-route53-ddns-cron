@@ -28,20 +28,13 @@ _Remember to replace the sample values with actual values according to your setu
 
 Understand more about these values by reading the [README](https://github.com/pejulian/simple-route53-ddns/blob/master/README.md) for the node module that this server will invoke.
 
-Once everything is setup, make sure to build the script at least once to have the `dist` folder output:
+Once everything is setup, run `npm start` to manually start the server.
 
-```bash
-npm run build
-```
 
-and then run 
+For starting the server as a deamon:
 
-```bash
-node -r dotenv/config
-```
-
-or using `nodemon`:
-
-```bash
-nodemon -r dotenv/config
-```
+1. Make sure to run `npm build` to create the `dist` folder
+2. Run the following
+    ```bash
+    /path/to/repo/node_modules/bin/nodemon -r dotenv/config /path/to/repo/dist/index.js
+    ```

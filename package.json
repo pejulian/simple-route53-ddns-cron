@@ -7,7 +7,7 @@
         "simple-route53-ddns-cron": "./dist/index.js"
     },
     "scripts": {
-        "start": "npm run build && node dist/index.js",
+        "start": "npm run build && nodemon -r dotenv/config dist/index.js",
         "eslint": "./node_modules/.bin/eslint . --fix",
         "build": "rimraf dist/* && npm run eslint && tsc",
         "test": "jest",
@@ -41,7 +41,6 @@
     "license": "ISC",
     "dependencies": {
         "chalk": "^4.1.1",
-        "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "node-cron": "^3.0.0",
         "shelljs": "^0.8.4",
@@ -57,6 +56,7 @@
         "@typescript-eslint/parser": "^4.22.0",
         "child-process-promise": "^2.2.1",
         "cpx": "^1.5.0",
+        "dotenv": "^8.2.0",
         "eslint": "^7.24.0",
         "eslint-config-prettier": "^8.2.0",
         "eslint-plugin-jest": "^24.3.5",
@@ -64,6 +64,7 @@
         "husky": "^6.0.0",
         "jest": "^26.6.3",
         "lint-staged": "^10.5.4",
+        "nodemon": "^2.0.7",
         "prettier": "^2.2.1",
         "pretty-quick": "^3.1.0",
         "rimraf": "^3.0.2",
