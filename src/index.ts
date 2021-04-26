@@ -31,6 +31,7 @@ const server = app.listen(1337, () => {
 
     if (
         typeof process.env.HOSTED_ZONE_ID === 'undefined' ||
+        process.env.HOSTED_ZONE_ID === null ||
         process.env.HOSTED_ZONE_ID.length === 0
     ) {
         console.log(
@@ -43,12 +44,13 @@ const server = app.listen(1337, () => {
     }
 
     if (
-        typeof process.env.DOMAIN_NAME === 'undefined' ||
-        process.env.DOMAIN_NAME.length === 0
+        typeof process.env.DOMAIN_NAMES === 'undefined' ||
+        process.env.DOMAIN_NAMES === null ||
+        process.env.DOMAIN_NAMES.length === 0
     ) {
         console.log(
             chalk.redBright(
-                `process.env.DOMAIN_NAME is undefined... this script requires a valid FQDN to which the public ip of this network will be mapped`
+                `process.env.DOMAIN_NAMES is undefined... this script requires at least one valid FQDN to which the public ip of this network will be mapped`
             )
         );
         server.close();
@@ -57,6 +59,7 @@ const server = app.listen(1337, () => {
 
     if (
         typeof process.env.IAM_PROFILE === 'undefined' ||
+        process.env.IAM_PROFILE === null ||
         process.env.IAM_PROFILE.length === 0
     ) {
         console.log(
@@ -70,6 +73,7 @@ const server = app.listen(1337, () => {
 
     if (
         typeof process.env.REGION === 'undefined' ||
+        process.env.REGION === null ||
         process.env.REGION.length === 0
     ) {
         console.log(
@@ -87,7 +91,7 @@ const server = app.listen(1337, () => {
                 shelljs.exec(
                     `npm run simple-route53-ddns -- update-record-set -h ${
                         process.env.HOSTED_ZONE_ID
-                    } -d ${process.env.DOMAIN_NAME} -p ${
+                    } -d ${process.env.DOMAIN_NAMES?.split(',').join(' ')} -p ${
                         process.env.IAM_PROFILE
                     } -r ${process.env.REGION ?? `ap-southeast-1`}`
                 );
