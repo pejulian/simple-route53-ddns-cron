@@ -5,7 +5,7 @@ declare global {
         interface ProcessEnv {
             readonly PORT: string | undefined;
             readonly HOSTED_ZONE_ID: string | undefined;
-            readonly DOMAIN_NAMES: string | undefined;
+            readonly DOMAIN_NAME: string | undefined;
             readonly IAM_PROFILE: string | undefined;
             readonly REGION: string | undefined;
             readonly TTL: string | undefined;

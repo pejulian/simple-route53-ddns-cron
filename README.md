@@ -11,7 +11,7 @@ Fork the repository and create a `.env` file in the root directory with the foll
 ```bash
 PORT=3000
 HOSTED_ZONE_ID=Z01234567ABCDEFGH1XYZ
-DOMAIN_NAMES=nas.foo-bar.xyz,a.b.c,x.y.z
+DOMAIN_NAME=nas.foo-bar.xyz
 IAM_PROFILE=user-iam
 REGION=ap-antartica-1
 TTL=60
@@ -24,7 +24,7 @@ _Remember to replace the sample values with actual values according to your setu
 
 > `CRON_EXP` must be a valid cron expression
 
-> `DOMAIN_NAMES` must be a valid FQDN that is being managed in a Hosted Zone on Route53. Multiple domain names can be supplied by a comma delimited string
+> `DOMAIN_NAME` must be a valid FQDN that is being managed in a Hosted Zone on Route53.
 
 > `IAM_PROFILE` must be properly configured IAM User on your machine (configured via AWS CLI)
 
