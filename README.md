@@ -6,7 +6,11 @@ My use case for this server is for it to be run within a TrueNAS (FreeBSD) jail 
 
 ## Usage
 
-Fork the repository and create a `.env` file in the` root directory with the following variables:
+Fork the repository.
+
+Run `npm ci` to install dependencies.
+
+Then create a `.env` file in the` root directory with the following variables:
 
 ```bash
 PORT=3000
@@ -37,16 +41,18 @@ Once everything is setup, run `npm start` to manually start the server.
 Create a simple startup shell script (i.e. `startup-script.sh`) that navigates to the repo directory and run `npm start`:
 
 ```bash
-#! /bin/sh
-cd /root/simple-route53-ddns-cron
+#!/bin/sh
+cd /path/to/simple-route53-ddns-cron
 npm run start
 ```
 
 Then create an entry in `/etc/crontab` that will run the script on every reboot:
 
 ```bash
-@reboot root /path/to/repo/startup-script.sh
+@reboot /path/to/startup-script.sh
 ```
+
+> This can also be set up via crontab -e in some distros
 
 This will startup `nodemon` and subsequently the `expressjs` server that will schedule the `cron` to run at the predefined timeslots.
 
