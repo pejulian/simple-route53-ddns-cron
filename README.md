@@ -2,7 +2,7 @@
 
 This repository holds a simple express server that can be spun up to run the node module [simple-route53-ddns](https://github.com/pejulian/simple-route53-ddns) that will fetch the public IP address of the current network it is running on and update it in the relevant "A" record in Route53 for the specified AWS account.
 
-My use case for this server is for it to be run in an RPI4 instance using `crontab` to keep my public ip address updated against my FQDN in AWS Route53.
+My use case for this server is for it to be run in an RPI4 in `crontab` to keep my public ip address updated against my FQDN in AWS Route53.
 
 ## Usage
 
@@ -15,7 +15,7 @@ Then create a `.env` file in the` root directory with the following variables:
 ```bash
 PORT=3000
 HOSTED_ZONE_ID=Z01234567ABCDEFGH1XYZ
-DOMAIN_NAME=nas.foo-bar.xyz
+DOMAIN_NAMES=nas.foo-bar.xyz,vpn.foo-bar.xyz
 IAM_PROFILE=user-iam
 REGION=ap-antartica-1
 TTL=60
@@ -28,7 +28,7 @@ _Remember to replace the sample values with actual values according to your setu
 
 > `CRON_EXP` must be a valid cron expression
 
-> `DOMAIN_NAME` must be a valid FQDN that is being managed in a Hosted Zone on Route53.
+> `DOMAIN_NAMES` each entry must be a valid FQDN that is being managed in a Hosted Zone on Route53.
 
 > `IAM_PROFILE` must be properly configured IAM User on your machine (configured via AWS CLI)
 
