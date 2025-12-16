@@ -1,13 +1,8 @@
-const packageJson = (
-    await import('./package.json', {
-        assert: { type: 'json' }
-    })
-).default;
-
+import packageJson from './package.json' with { type: 'json' };
 import { nodeExternalsPlugin } from 'esbuild-node-externals';
-import esbuild, { BuildOptions } from 'esbuild';
+import esbuild from 'esbuild';
 
-const commonArgs: BuildOptions = {
+const commonArgs = {
     entryPoints: ['./src/index.ts'],
     minifySyntax: true,
     mangleQuoted: true,

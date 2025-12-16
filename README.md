@@ -2,7 +2,7 @@
 
 This repository holds a simple express server that can be spun up to run the node module [simple-route53-ddns](https://github.com/pejulian/simple-route53-ddns) that will fetch the public IP address of the current network it is running on and update it in the relevant "A" record in Route53 for the specified AWS account.
 
-My use case for this server is for it to be run within a TrueNAS (FreeBSD) jail via `crontab` to keep my public ip address updated against my FQDN in AWS Route53.
+My use case for this server is for it to be run in an RPI4 instance using `crontab` to keep my public ip address updated against my FQDN in AWS Route53.
 
 ## Usage
 
